@@ -24,19 +24,17 @@ static const char* additionalExtensions[] = {
 
 __attribute__((constructor))
 static void initMetal(void) {
-	bool enableValidation = false;
-
-	if (getenv("METAL_INDIUM_VALIDATION")) {
-		enableValidation = true;
-	}
-
-	Indium::init(additionalExtensions, sizeof(additionalExtensions) / sizeof(*additionalExtensions), enableValidation);
+	// Skip Indium/Vulkan. Loading lavapipe on this host SIGILL'd Comet.
 };
 
 __attribute__((destructor))
 static void finitMetal(void) {
-	MTLDeviceDestroyAll();
-	Indium::finit();
 };
 
 #endif
+
+// Comet/Chromium 151 compatibility stubs for symbols not yet implemented in Darling Metal.
+extern "C" {
+void MTLCommonCounterSetTimestamp(void) {}
+void MTLCommonCounterTimestamp(void) {}
+}

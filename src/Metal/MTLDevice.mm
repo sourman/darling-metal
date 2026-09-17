@@ -54,23 +54,13 @@ void MTLDeviceDestroyAll(void) {
 
 MTL_EXTERN
 id<MTLDevice> MTLCreateSystemDefaultDevice(void) {
-#if DARLING_METAL_ENABLED
-	ensureDevices();
-	if (systemDefaultDevice) {
-		return [systemDefaultDevice retain];
-	}
-#endif
+	// Comet on DCV: Indium/lavapipe init caused SIGILL. Software path needs a nil device.
 	return nil;
 };
 
 MTL_EXTERN
 NSArray<id<MTLDevice>>* MTLCopyAllDevices(void) {
-#if DARLING_METAL_ENABLED
-	ensureDevices();
-	return [devices copy];
-#else
 	return [NSArray new];
-#endif
 };
 
 MTL_EXTERN

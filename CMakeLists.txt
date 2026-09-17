@@ -41,6 +41,17 @@ add_framework(Metal
 
 	SOURCES
 		src/Metal/Metal.mm
+		src/Metal/MTLArgumentDescriptor.mm
+		src/Metal/MTLVertexBufferLayoutDescriptor.mm
+		src/Metal/MTLVertexAttributeDescriptor.mm
+		src/Metal/MTLLogStateDescriptor.mm
+		src/Metal/MTLIndirectCommandBufferDescriptor.mm
+		src/Metal/MTLFunctionConstantValues.mm
+		src/Metal/MTLCounterSampleBuffer.mm
+		src/Metal/MTLCounterSampleBufferDescriptor.mm
+		src/Metal/MTLCommandQueueDescriptor.mm
+		src/Metal/MTLCaptureDescriptor.mm
+		src/Metal/MTLBlitPassDescriptor.mm
 		src/Metal/MTLBuffer.mm
 		src/Metal/MTLCaptureManager.mm
 		src/Metal/MTLCommandBuffer.mm
