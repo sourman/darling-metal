@@ -171,3 +171,10 @@ add_framework(MetalPerformanceShaders
 target_include_directories(MetalPerformanceShaders PUBLIC
 	include
 )
+
+# Comet dyld compatibility stubs
+if(TARGET Metal_obj)
+  target_sources(Metal_obj PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/comet_stubs.m)
+elseif(TARGET Metal)
+  target_sources(Metal PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/comet_stubs.m)
+endif()
